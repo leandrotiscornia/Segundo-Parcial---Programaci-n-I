@@ -1,7 +1,7 @@
 version: '2'
 services:
   php:
-    image: ggmartinez/php:7-apache-Xdebug
+    build: App/.
     tty: true
     restart: unless-stopped
     ports:
@@ -11,15 +11,10 @@ services:
     environment:
       - DOCUMENT_ROOT=/var/www/html/public
   mysql:
-    image: mysql:5.7
+    build: BD/.
     tty: true 
     ports:
       - "3306:3306"
     restart: unless-stopped 
-    environment:
-      - MYSQL_ROOT_PASSWORD=1234
-      - MYSQL_USER=usuario
-      - MYSQL_PASSWORD=1234
-      - MYSQL_DATABASE=base
     volumes:
       - ./mysql:/var/lib/mysql
