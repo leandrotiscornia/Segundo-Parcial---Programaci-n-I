@@ -25,7 +25,8 @@ CREATE TABLE Post_De_Blog(
 CREATE TABLE Post(
     Id int primary key auto_increment,
     Titulo VARCHAR(50) not null,
-    Contenido VARCHAR(255) not null
+    Contenido VARCHAR(255) not null,
+    Eliminado boolean
 );
 CREATE TABLE Comentario_De_Post(
     Id_Post int,

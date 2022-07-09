@@ -2,10 +2,10 @@
     require "../utils/autoload.php";
 
     class BlogModelo extends Modelo{
-        public $Id
-        public $Nombre
+        public $Id;
+        public $Nombre;
         public $IdDeUsuario;
-        public $Posts
+        public $Posts;
 
         public function __construct($id=""){
             parent::__construct();
@@ -28,7 +28,7 @@
             $this -> conexionBaseDeDatos -> query($sql);
         }
         public function Actualizar(){
-            $sql = "UPDATE usuario SET
+            $sql = "UPDATE Blog SET
             Nombre = '" $this -> Nombre ."'
             WHERE Id = " . $this -> Id;
             $this -> conexionBaseDeDatos -> query($sql);

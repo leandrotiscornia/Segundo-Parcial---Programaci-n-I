@@ -5,7 +5,7 @@ require "../utils/autoload.php"
     class ComentarioModelo extends Modelo{
         public $Id;
         public $Id_Usuario;
-        public $Id_Post
+        public $Id_Post;
         public $Fecha;
         public $Contenido;
 
@@ -55,7 +55,7 @@ require "../utils/autoload.php"
         }
         public function ObtenerTodos(){
             $sql = "SELECT * FROM Comentario
-                JOIN Comentario_De_Post ON Comentario_De_Post.Id_Comentario = Comentario.Id 
+                JOIN Comentario_De_Post ON Comentario_De_Post.Id_Comentario = Comentario.Id, 
                 WHERE Id_Post = '" . $this -> Id_Post . "'";
             $filas = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC);
 
