@@ -59,6 +59,16 @@ require "../utils/autoload.php"
                 WHERE Id_Post = '" . $this -> Id_Post . "'";
             $filas = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC);
 
+            $resultado = array();
+            foreach($filas as $fila){
+                $comentario = new ComentarioModelo();
+                $comentario -> Id = $fila['Id'];
+                $comentario -> Id_Usuario = $fila['Id_Usuario'];
+                $comentario -> Fecha = $fila['Fecha'];
+                $comentario -> Contenido = $fila['Contenido'];
+                array_push($resultado, $comentario);
+            }
+            return $resultado
         }
         public function Eliminar(){
             $sql = "UPDATE Comentario SET

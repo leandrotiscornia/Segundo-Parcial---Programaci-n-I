@@ -50,6 +50,7 @@
                 $blog -> IdDeUsuario = $fila['IdUsuario'];
                 array_push($resultado, $blog);
             }
+            return $resultado;
         }
         public function Eliminar(){
             $sql = "DELETE FROM Blog WHERE Id = " . $this -> Id;
