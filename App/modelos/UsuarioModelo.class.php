@@ -39,7 +39,7 @@ require "../utils/autoload.php";
             $sql = "UPDATE usuario SET
             username = '" . $this -> NombreUsuario . "',
             password = '" . $this -> Password . "'
-            WHERE id = " . $this -> id;
+            WHERE id = '" . $this -> id;
             $this -> conexionBaseDeDatos -> query($sql);
         }
 

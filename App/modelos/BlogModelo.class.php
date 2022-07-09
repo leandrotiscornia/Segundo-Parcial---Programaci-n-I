@@ -6,7 +6,6 @@
         public $Nombre
         public $IdDeUsuario;
         public $Posts
-        public $Anuncios
 
         public function __construct($id=""){
             parent::__construct();
@@ -14,11 +13,11 @@
                 $this -> id = $id;
                 $this -> Obtener();
         }
-        public function Guardar(){
+        private function guardar(){
             if($this -> Id == NULL) $this -> insertar();
             else $this -> actualizar();
         }
-        public function Insertar(){
+        private function insertar(){
             $sql = "INSERT INTO Blog (Nombre, Id_Usuario) VALUES (
                 '" . $this -> Nombre . "',
                 '" . $this -> IdDeUsuario . "')";

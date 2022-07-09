@@ -20,7 +20,7 @@ CREATE TABLE Post(
     Titulo VARCHAR(50) not null,
     Contenido VARCHAR(255) not null
 );
-CREATE TABLE Comentario_De_Blog(
+CREATE TABLE Comentario_De_Post(
     Id_Post int,
     Id_Comentario int,
     FOREIGN KEY (Id_Post) REFERENCES Post(Id),
