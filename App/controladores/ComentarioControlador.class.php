@@ -20,7 +20,7 @@
         }
         public static function Obtener($context){
             $Comentario = new ComentarioModelo();
-            $Comentario -> Id_Post = $context['post']['id_post'];
+            $Comentario -> Id_Post = $context['get']['id_post'];
             return $Comentario -> ObtenerTodos();
         }
         public static function Eliminar($context){
