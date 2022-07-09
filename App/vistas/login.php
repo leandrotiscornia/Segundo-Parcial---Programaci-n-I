@@ -13,7 +13,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Fabrica de Chacinados - Bienvenido</h1>
+    <h1>Blog</h1>
     
     <form action="/login" method="post">
         Usuario <input type="text" name="usuario"> <br />

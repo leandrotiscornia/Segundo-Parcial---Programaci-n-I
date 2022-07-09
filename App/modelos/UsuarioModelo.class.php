@@ -4,14 +4,15 @@ require "../utils/autoload.php";
 
     class UsuarioModelo extends Modelo{
         public $Id;
-        public $Nombre;
+        public $NombreUsuario;
+        public $Nombre_Completo
         public $Password;
         
 
         public function __construct($id=""){
             parent::__construct();
             if($id != ""){
-                $this -> id = $id;
+                $this -> Id = $id;
                 $this -> Obtener();
             }
         }
@@ -22,8 +23,9 @@ require "../utils/autoload.php";
         }
 
         private function insertar(){
-            $sql = "INSERT INTO usuario (username,password) VALUES (
-            '" . $this -> Nombre . "',
+            $sql = "INSERT INTO usuario (username, complete_name,password) VALUES (
+            '" . $this -> NombreUsuario . "',
+            '" . $this -> NombreCompleto . "',
             '" . $this -> hashearPassword($this -> Password) . "')";
 
             $this -> conexionBaseDeDatos -> query($sql);
@@ -35,7 +37,7 @@ require "../utils/autoload.php";
 
         private function actualizar(){
             $sql = "UPDATE usuario SET
-            username = '" . $this -> Nombre . "',
+            username = '" . $this -> NombreUsuario . "',
             password = '" . $this -> Password . "'
             WHERE id = " . $this -> id;
             $this -> conexionBaseDeDatos -> query($sql);
@@ -46,7 +48,7 @@ require "../utils/autoload.php";
             $fila = $this -> conexionBaseDeDatos -> query($sql) -> fetch_all(MYSQLI_ASSOC)[0];
 
             $this -> Id = $fila['id'];
-            $this -> Nombre = $fila['username'];
+            $this -> NombreUsuario = $fila['username'];
         }
 
         public function Eliminar(){
@@ -62,14 +64,14 @@ require "../utils/autoload.php";
             foreach($filas as $fila){
                 $p = new UsuarioModelo();
                 $p -> Id = $fila['id'];
-                $p -> Nombre = $fila['username'];
+                $p -> NombreUsuario = $fila['username'];
                 array_push($resultado,$p);
             }
             return $resultado;
         }
 
         public function Autenticar(){
-            $sql = "SELECT * FROM usuario WHERE username = '" . $this -> Nombre . "'";
+            $sql = "SELECT * FROM usuario WHERE username = '" . $this -> NombreUsuario . "'";
             $resultado = $this -> conexionBaseDeDatos -> query($sql);
             if($resultado -> num_rows == 0) {
                 return false;
