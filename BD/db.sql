@@ -4,6 +4,13 @@ CREATE TABLE usuario(
     complete_name varchar(50),
     password varchar(255)
 );
+CREATE TABLE Blog_De_Usuario(
+    Id_Blog int,
+    Id_Usuario int,
+    FOREIGN KEY (Id_Blog) REFERENCES Blog(Id),
+    FOREIGN KEY (Id_Usuario) REFERENCES usuario(id),
+    PRIMARY KEY (Id_Usuario, Id_Blog)
+);
 CREATE TABLE Blog(
     Id int primary key auto_increment,
     Nombre varchar(50),

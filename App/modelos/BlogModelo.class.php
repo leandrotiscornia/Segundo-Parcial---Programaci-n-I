@@ -18,11 +18,14 @@
             else $this -> actualizar();
         }
         private function insertar(){
-            $sql = "INSERT INTO Blog (Nombre, Id_Usuario) VALUES (
-                '" . $this -> Nombre . "',
+            $sql = "INSERT INTO Blog (Nombre) VALUES (
+                '" . $this -> Nombre . "')";
+            $this -> conexionBaseDeDatos -> query($sql);
+            
+            $sql = "INSERT INTO Blog_De_Usuario (Id_Blog, Id_Usuario) VALUES (
+                Last_Insert_ID(),
                 '" . $this -> IdDeUsuario . "')";
-    
-                $this -> conexionBaseDeDatos -> query($sql);
+            $this -> conexionBaseDeDatos -> query($sql);
         }
         public function Actualizar(){
             $sql = "UPDATE usuario SET
